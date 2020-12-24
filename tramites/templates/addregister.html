@@ -1,0 +1,87 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Añadir nuevo trámite
+{% endblock title %}
+   
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class= "grid-container">
+    <div class="grid-x">
+        <h1 class= "cell">Agregar nuevo trámite</h1>
+        <form class="cell grid-x grid-margin-x" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div class="cell large-3">
+                <span class="label primary">Fecha</span>
+                <!-- <label>Fecha</label> -->
+                <span data-tooltip tabindex="1" title="Ingrese Fecha.">  
+                <input type="date" id="fechaingreso" name="fechaingreso">
+                </span>  
+            </div>
+            
+            <div class="cell large-2">
+                <label>Tramite Nro:
+                    <span data-tooltip tabindex="1" title="Ingrese Nro Trámite."> 
+                    {{form.guianro}}
+                    </span>
+                </label>
+            </div>    
+            
+            <div class="cell large-7">
+                <span data-tooltip tabindex="1" title="Ingrese el Usuario."> 
+                <label>Usuario:
+                    {{form.usuario}}
+                </label>
+                </span>
+            </div>   
+            
+            <div class="cell medium-9">
+                <span data-tooltip tabindex="1" title="Realice una pequeña descripción del trámite."> 
+                <label>Descripcion:</label></span>
+                    {{form.descripcion}}
+            </div>  
+            
+            <div class="cell large-2">
+                <label>Oficio:
+                    {{form.oficio}}
+                </label>
+            </div>
+
+            <div class="cell large-3">
+                <label>Fecha Entrega:</label>
+                <input type="date" id="fechaentrega" name="fechaentrega"> 
+            </div>
+            
+            <div class="cell large-6">
+                <label>Enviado a:</label>
+                    {{form.enviadoa}}
+            </div>
+
+            <div class="cell large-12">
+                <label>Observacion:</label>
+                {{form.observacion}}
+            </div>
+
+            <div class="cell large-4">
+                <label>Atendido:</label>
+                    {{form.atendido}}
+            </div>
+            
+            <div class="cell large-12">
+                <label>documentos:</label>
+                    {{form.documentos}}
+            </div>
+
+            <div class="cell large-12" align = "center">
+                <button type="submit" class="success button">Guardar </button>
+            </div>
+            
+        </form> 
+
+    </div>
+
+
+</div>
+
+{% endblock content %}

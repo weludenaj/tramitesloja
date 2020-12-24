@@ -1,0 +1,97 @@
+{% extends 'base_home.html' %}
+{% block content %}
+
+{% include 'header.html' %}
+
+
+
+<div class="grid-container full">
+  <div class="grid-x" >
+      <h4 class="cell" align="center">TRAMITES EXTERNOS</h4>
+      <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %} 
+        <div class="cell large-5">
+          <input type="text" id="nombre" name="nombre" placeholder="Buscar usuario"> 
+        </div>
+        <div class="cell large-2">
+          <button type="submit" class="success button">Buscar</button>
+        </div>
+      </form>
+      <div class="cell">
+          <table>
+          <thead>
+            <tr>
+              <th width="50">Nro</th>
+              <th width="50">Id</th>
+              <th width="200">Fecha</th>
+              <th width="250">Usuario</th>
+              <th width="150">Guia Nro</th>
+              <th width="150">Descripción</th>
+              <th width="150">Oficio</th>
+              <th width="150">Fecha Entrega</th>
+              <th width="150">Enviado a</th>
+              <th width="150">Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+            {% for registro in  listaNumeros %}
+
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{registro.id}}</td>
+              <td>{{registro.fechaingreso}}</td>
+              <td>{{registro.usuario}}</td> 
+              <td>{{registro.guianro}}</td>
+              <td>{{registro.descripcion}}</td>
+              <td>{{registro.oficio}}</td>
+              <td>{{registro.fechaentrega}}</td>
+              <td>{{registro.enviadoa}}</td>
+              <td><a class="button warning" href="{% url 'modificar_registro' registro.id %}">Editar</a> <a class="button alert" href="{% url 'borrar_registro' registro.id %}">Borrar</a></td>
+            </tr>
+                      
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="cell">
+        {% if is_paginated %}
+        <nav aria-label="Pagination">
+            <ul class="pagination">
+              {% if page_obj.has_previous %}
+              <li class="pagination-previous">
+                <a href="?page={{page_obj.previous_page_number}}"></a>Atras 
+              </li>
+              {% endif %}
+              
+              {% for pagina in paginator.page_range %}
+               
+                {% ifequal pagina page_obj.number  %}
+                  <li class="current"><span class="show-for-sr">Pagina Nro</span> {{pagina}}</li>
+                {% else %}
+                  {% if pagina > page_obj.number|add:'-3' and pagina < page_obj.number|add:'3'%}
+                    <li>
+                      <a href="?page={{pagina}}">{{ pagina }}</a>
+                    </li>
+                  {% endif %}
+                {% endifequal %} 
+                <!-- <li class="ellipsis" aria-hidden="true"></li> -->
+              {% endfor %}
+              
+              {% if page_obj.has_next %}
+              <li class="pagination-next">
+                <a href="?page={{page_obj.next_page_number}}"></a>Siguiente 
+              </li>
+              {% endif %}
+
+              
+            </ul>
+        </nav>
+        {% endif %}
+      </div>
+  </div>
+  
+
+  
+
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends 'base_home.html' %}
+
+
+{% block title %}
+    Editar Registro
+    
+{% endblock title %}
+    
+
+{% block content %}
+{% include 'header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h4 class="cell">
+            Modificar Registro
+        </h4>
+        <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <div class="cell large-2">
+                <label>Fecha</label>
+                    <!-- {{form.fechaingreso}} <input type="date"> -->
+                    {{form.fechaingreso}}
+            </div>
+            
+            <div class="cell large-2">
+                <label>Tramite Nro:
+                    {{form.guianro}}
+                </label>
+            </div>    
+            
+            <div class="cell large-8">
+                <label>Usuario:
+                    {{form.usuario}}
+                </label>
+            </div>   
+            
+            <div class="cell medium-7">
+                <label>Descripcion:
+                    {{form.descripcion}}
+                </label>
+            </div>  
+            
+            <div class="cell large-2">
+                <label>Oficio:
+                    {{form.oficio}}
+                </label>
+            </div>
+
+            <div class="cell large-3">
+                <label>Fecha Entrega:</label>
+                <input type="date" id="fechaentrega" name="fechaentrega"> 
+            </div>
+            
+            <div class="cell large-4">
+                <label>Enviado a:</label>
+                    {{form.enviadoa}}
+            </div>
+
+            <div class="cell auto">
+                <label>Observacion:</label>
+                    {{form.observacion}}
+            </div>
+
+            <div class="cell large-4">
+                <label>Atendido:</label>
+                    {{form.atendido}}
+            </div>
+
+            <div class="cell large-4">
+                <label>ID:</label>
+                    {{form.id}}
+            </div>
+            
+            <div class="cell large-12" align = "center">
+                <button type="submit" class="success button">Actualizar</button>
+            </div>
+                
+        </form>     
+    </div>
+</div>
+
+{% endblock content %}

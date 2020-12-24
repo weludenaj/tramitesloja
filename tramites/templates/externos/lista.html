@@ -1,0 +1,14 @@
+<h1> Lista de Tramites Externos</h1>
+<p>
+    <form method="GET">{% csrf_token %}
+        <input type="text" id="kword" name="kword" placeholder="Ingrese Usuario">
+        <input type="date" name="fecha1" id="fecha1">
+        <input type="date" name="fecha2" id="fecha2">
+        <button type="submit">Buscar</button>
+    </form>
+</p>
+<ul>
+    {% for e in lista_externos %}
+        <li>{{e.usuario}} - {{e.guianro}} - {{e.fechaingreso}}</li>
+    {% endfor %}
+</ul>
