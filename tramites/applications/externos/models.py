@@ -349,10 +349,11 @@ class planificacion(models.Model):
       ("4", "OFICIO"),
       ("5", "COPIA"),
       ("6", "S/D"),
+      ("7", "TRAMITE INTERNO"),
     ]
     registro = models.PositiveIntegerField(verbose_name = "Numero")
     fecha=models.DateField(null=False, blank=False, verbose_name="Fecha")
-    guianro=models.CharField(max_length=20, verbose_name="Tramite Nro", null=True, blank=True)
+    guianro=models.CharField(max_length=40, verbose_name="Tramite Nro", null=True, blank=True)
     categoria = models.CharField(
       verbose_name= "Categoria",
       max_length= 1,
