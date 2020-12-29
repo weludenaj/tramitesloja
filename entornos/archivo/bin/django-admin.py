@@ -1,4 +1,4 @@
-#!/home/postgress/ArchivoRegistro/entornos/archivo/bin/python3
+#!/home/wludena/tramitesloja/entornos/archivo/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

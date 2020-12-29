@@ -310,7 +310,7 @@ class EntidadExterna(models.Model):
   Entidad = models.CharField(verbose_name="Entidad", max_length=250)
 
   def __str__(self):
-    return 'Numero%s Entidad %s' % (self.id, self.Entidad)
+    return (self.Entidad)
 
 class Comunicaciones(models.Model):
   medio= [
@@ -385,7 +385,8 @@ class convenios(models.Model):
       ("3", "MINISTERIOS"),
       ("4", "VARIAS INSTITUCIONES"),
       ("5", "CARTAS COMPROMISOS"),
-      ("6","ASOCIACIONES, SINDICATOS, BARRIOS")
+      ("6", "ASOCIACIONES, SINDICATOS, BARRIOS"),
+      ("7", "PRESTAMOS-CREDITOS")
     ]
     cumplimientos=[
       ("1", "EN EJECUCION"),

@@ -100,25 +100,29 @@ class ordenanzasAdmin(admin.ModelAdmin):
     ordering =("-id",)
 
 class EntidadExternaAdmin(admin.ModelAdmin):
-    list_display=("id", "Entidad")
+    list_display=("Entidad",)
     search_fields=("Entidad",)
     ordering=("Entidad",)
 
 class ComunicacionesAdmin(admin.ModelAdmin):
-    list_display=("numero","medio", "entidad","remite", "asunto","contestado","observacion" )
-    search_fields=("medio","remite","asunto","contestado",)
+    list_display=("numero","fecha","medios", "entidad","remite", "asunto","contestado","observacion" )
+    search_fields=("medios","remite","asunto","contestado",)
     ordering=("-fecha",)
+    date_hierarchy=("fecha")
 
 class planificacionAdmin(admin.ModelAdmin):
     list_display=("registro", "fecha", "guianro","categoria","referencia", "asunto","remitente","departamento","destinatario","departamentof","observacion")
-    search_fields=("registro", "fecha", "guianro","categoria","referencia", "asunto","remitente","departamento","destinatario","departamentof","observacion")
+    search_fields=("registro", "fecha", "guianro","categoria","referencia", "asunto","remitente","destinatario","observacion")
+    #list_filter=("departamento",)
     ordering=("-fecha",)
-
+    date_hierarchy=("fecha")
+   	
 
 class conveniosAdmin(admin.ModelAdmin):
     list_display=("registro","institucion","convenio","objeto","plazo","fechainicio","fechafinal","cumplimiento","encargado","dependencia","observacion")
-    search_fields=("registro","institucion","convenio","objeto","plazo","fechainicio","fechafinal","cumplimiento","encargado","dependencia","observacion")
-    ordering=("-fechainicio",)
+    search_fields=("registro","institucion","convenio","objeto","plazo","fechainicio","fechafinal","cumplimiento","encargado","observacion")
+    ordering=("-registro" , "-fechainicio")
+    list_filter=("tipoinstituto",)
 
 admin.site.site_header = 'Municipio de Loja 2020' 
 admin.site.register(rexternos, rexternosAdmin)
@@ -138,6 +142,7 @@ admin.site.register(EntidadExterna, EntidadExternaAdmin)
 admin.site.register(Comunicaciones,ComunicacionesAdmin)
 admin.site.register(planificacion,planificacionAdmin)
 admin.site.register(convenios,conveniosAdmin)
+
 admin.site.unregister(Group)
 #admin.site.unregister(User)
 ## comentarios
