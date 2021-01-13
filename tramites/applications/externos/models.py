@@ -210,11 +210,12 @@ class Ciudad(models.Model):
         return self.nombre
 
 class Dependencias(models.Model):
-    nombre = models.CharField(verbose_name="Dependencia", max_length=250)
+    nombre = models.CharField(verbose_name="Dependencia", max_length=250, unique=True)
     class Meta:
         verbose_name = 'Dependencia'
         verbose_name_plural = 'Dependencias'
         ordering = ['nombre']
+        unique_together = ('nombre',)
     
     def __str__(self):
         return self.nombre

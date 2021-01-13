@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q 
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 from django.views.generic import (
@@ -34,9 +35,11 @@ class ListExternos(ListView):
             return rexternos.objects.buscar_externos2(palabra_clave)
         #return rexternos.objects.buscar_externos2(palabra_clave, f1, f2)
 
-class InicioView(TemplateView):
+class InicioView(LoginRequiredMixin, TemplateView):
     """ Vista que carga la pagina de inicio """
     template_name = 'home.html'
+    #template_name = 'base/base.html'
+    #login_url='/admin'
 
 class addregister(CreateView):
     """ vista para registrar nuevo registro """

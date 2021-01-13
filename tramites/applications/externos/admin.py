@@ -68,6 +68,7 @@ class DependenciasAdmin(admin.ModelAdmin):
     list_display=("nombre",)
     search_fields=("nombre",)
     ordering = ("nombre",)
+    unique_together = ("nombre")
 
 class OficioindiceAdmin(admin.ModelAdmin):
     list_display=("numoficio", "origen", "fecha",  "destinatario", "dpto", "destino", "observacion", "detalle")

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'applications.externos',
     'applications.internos',
+    'applications.bitacora',
     'ckeditor',
 ]
 
