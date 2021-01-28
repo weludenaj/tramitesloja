@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'applications.externos',
     'applications.internos',
     'applications.bitacora',
+    'applications.inventario',
     'ckeditor',
 ]
 

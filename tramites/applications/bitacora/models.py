@@ -44,7 +44,7 @@ class pozos(models.Model):
     ("2", "PASO"),  
   ]
   numero= models.CharField(("Numero"), max_length=50)
-  direccion = models.ForeignKey(direcciones, on_delete=models.CASCADE, default=1)
+  direccion = models.ForeignKey(direcciones, on_delete=models.CASCADE, default=1, help_text="Escoja la direccion")
   posicion = models.CharField(
     verbose_name="Posicion",
     choices= ubicacion,

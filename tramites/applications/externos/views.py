@@ -34,12 +34,12 @@ class ListExternos(ListView):
         else:
             return rexternos.objects.buscar_externos2(palabra_clave)
         #return rexternos.objects.buscar_externos2(palabra_clave, f1, f2)
-
+ 
 class InicioView(LoginRequiredMixin, TemplateView):
     """ Vista que carga la pagina de inicio """
     template_name = 'home.html'
     #template_name = 'base/base.html'
-    #login_url='/admin'
+    login_url='/admin'
 
 class addregister(CreateView):
     """ vista para registrar nuevo registro """

@@ -18,5 +18,6 @@ from django.urls import path, re_path, include
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('bitacora/', include (('bitacora.urls', 'bitacora'))),
     re_path('', include('applications.externos.urls')),
 ]
