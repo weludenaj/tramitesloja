@@ -1,0 +1,13 @@
+
+<h1>Lista de Empleados</h1>
+<p>
+    <form method="GET">{% csrf_token %}
+        <input type="text" id="kword" name="kword" placeholder="Ingrese dato empleado">
+        <button type="submit"> Consultar </button>
+    </form> 
+
+    {% for e in lista_empleados %}
+        <li>{{ e.cedula}} - {{e.nombres}} - {{e.correo}} - {{e.cargo}} </li>
+    {% endfor %}
+</p>
+</ul>

@@ -1,0 +1,89 @@
+{% extends 'base_home.html' %}
+
+
+{% block title %}
+    Editar Registro
+    
+{% endblock title %}
+    
+
+{% block content %}
+{% include 'header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h4 class="cell">
+            Modificar Direccion IP
+        </h4>
+        <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <div class="cell large-2">
+                <label>Direccion IP</label>
+                    <!-- {{form.fechaingreso}} <input type="date"> -->
+                    {{form.direccion}}
+            </div>
+            
+            <div class="cell large-2">
+                <label>Tipo de Ip
+                    {{form.tipos}}
+                </label>
+            </div>    
+            
+            <div class="cell large-2">
+                <label>Categoria:
+                    {{form.categoria}}
+                </label>
+            </div>   
+            
+            <div class="cell medium-4">
+                <label>Mac Address:
+                    {{form.macaddress}}
+                </label>
+            </div>  
+            
+            <div class="cell large-2">
+                <label>Equipo:
+                    {{form.equipo}}
+                </label>
+            </div>
+            
+            <div class="cell large-6">
+                <label>Switch:</label>
+                    {{form.switch}}
+            </div>
+            
+            <div class="cell large-2">
+                <label>Puerto:</label>
+                    {{form.puerto}}
+            </div>
+
+            <div class="cell auto">
+                <label>Dependencia:</label>
+                    {{form.dependencia}}
+            </div>
+
+            <div class="cell large-6">
+                <label>Empleado:</label>
+                    {{form.empleado}}
+            </div>
+            <div class="cell large-12">
+                <label>Observacion:</label>
+                    {{form.observacion}}
+            </div>
+
+            <div class="cell large-4">
+                <label>ID:</label>
+                    {{form.id}}
+            </div>
+            
+            <div class="cell large-12" align = "center">
+                <button type="submit" class="success button">Actualizar</button>
+                <a class ="success button" href ="{% url 'Ips' %}">Cancelar </a> 
+                
+            </div>
+                
+        </form>     
+    </div>
+    
+</div>
+
+{% endblock content %}

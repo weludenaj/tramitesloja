@@ -1,0 +1,29 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Añadir nueva direccion
+{% endblock title %}
+   
+{% block content %}
+
+{% include 'header.html' %}
+<form method="POST" class="form-inline">
+    {% csrf_token %}
+    <div class="col-xl-6 col-md-6 mb-6">
+        <h5>Añade Direccion</h5>
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+              <div class="medium-6 cell">
+                  {{form.as_p}}
+              </div>
+            </div>
+            <div>
+                <button type="submit" class="success button">Guardar</button>
+            </div>   
+    </div>
+    
+    
+</form>
+
+
+{% endblock content %}

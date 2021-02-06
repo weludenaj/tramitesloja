@@ -1,0 +1,104 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Listado de Switches
+{% endblock title %}
+   
+
+
+{% include 'header.html' %}
+{% block content %}
+
+<div class= "grid-container full">
+    <div class="grid-x">
+        <h4 class= "cell">LISTADO DE IPS</h4>
+
+        <div class="cell">
+        
+            <table class="hover">
+                
+                <thead>
+                <tr>
+                    <th width="50">Nro</th>
+                    <th width="80">Direccion</th>
+                    <th width="100">Tipo</th>
+                    <th width="150">Categoria</th>
+                    <th width="100">Mac Adress</th>
+                    <th width="100">Equipo</th>
+                    <th width="150">Switch</th>
+                    <th width="80">Puerto</th>
+                    <th width="100">Dependencia</th>
+                    <th width="120">Empleado</th>
+                    <th width="120">Observacion</th>
+                    <th width="150">Accion</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for registro in  lista_switches %}
+        
+                    <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{registro.direccion}}</td>
+                    <td>{{registro.tipos}}</td>
+                    <td>{{registro.categoria}}</td> 
+                    <td>{{registro.macaddress}}</td>
+                    <td>{{registo.equipo}}</td>
+                    <td>{{registro.switch}}</td>
+                    <td>{{registro.puerto}}</td>
+                    <td>{{registro.dependencia}}</td>
+                    <td>{{registro.empleado}}</td>
+                    <td>{{registro.observacion}}</td>
+                    <td><a class="button warning" href="{% url 'modificar_ip' registro.id %}">Editar</a></td>
+                    </tr>
+                            
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+    <div class="cell">
+        {% if is_paginated %}
+        <nav aria-label="Pagination">
+            <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="pagination-previous">
+                <a href="?page={{page_obj.previous_page_number}}">Atras </a>
+                </li>
+                {% if page_obj.number > 5 %}
+                <li class="pagination.num_pages">
+                    <a href="?page=1">1</a>
+                </li>
+                {% endif %}
+            {% endif %}
+                    
+            {% for pagina in paginator.page_range %}
+                {% ifequal pagina page_obj.number  %}
+                <li class="current"><span class="show-for-sr">Pagina Nro</span> {{pagina}}</li>
+                {% else %}
+                {% if pagina > page_obj.number|add:'-5' and pagina < page_obj.number|add:'5'%}
+                    <li>
+                    <a href="?page={{pagina}}">{{ pagina }}</a>
+                    </li>
+                {% endif %}
+                {% endifequal %} 
+                    
+            {% endfor %}
+                    
+            {% if page_obj.has_next %}
+                <li class="ellipsis" aria-hidden="true"></li> 
+                <li class="pagination.num_pages">
+                <a href="?page={{page_obj.paginator.num_pages}}">{{ page_obj.paginator.num_pages}}</a>
+                </li>
+                {% if page_obj.number > 5 %}
+                <li class="pagination-next">
+                <a href="?page={{page_obj.next_page_number}}">Siguiente </a> 
+                </li>
+                {% endif %}
+            {% endif %}
+        
+                    
+            </ul>
+        </nav>
+        {% endif %}
+        </div>
+</div>              
+{% endblock content %}

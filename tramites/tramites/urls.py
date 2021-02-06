@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('bitacora/', include (('bitacora.urls', 'bitacora'))),
     re_path('', include('applications.externos.urls')),
+    re_path('', include('applications.inventario.urls')),
 ]

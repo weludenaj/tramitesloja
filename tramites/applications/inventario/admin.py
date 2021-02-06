@@ -15,44 +15,48 @@ from .models import (
     Dependencias,
 )
 
+
 class SwitchesAdmin(admin.ModelAdmin):
-    list_display=("nombre","puertos","rack")
-    search_fields=("nombre", "rack") 
-    #list_filter=("fechaingreso",)
-    #date_hierarchy="fechaingreso" 
+    list_display = ("nombre", "puertos", "rack", "marca", "ip", "mac")
+    search_fields = ("nombre", "rack", "marca", "ip", "mac")
+    # list_filter=("fechaingreso",)
+    # date_hierarchy="fechaingreso"
+
 
 class TipoDireccionAdmin(admin.ModelAdmin):
-    list_display=("tipo",)
-    search_fields=("tipo",) 
-    #list_filter=("fechaingreso",)
-    #date_hierarchy="fechaingreso" 
-    
+    list_display = ("tipo",)
+    search_fields = ("tipo",)
+    # list_filter=("fechaingreso",)
+    # date_hierarchy="fechaingreso"
+
+
 class CategoriasAdmin(admin.ModelAdmin):
-    list_display=("categoria",)
-    search_fields=("categoria",)     
-    
+    list_display = ("categoria",)
+    search_fields = ("categoria",)
+
+
 class DependenciasAdmin(admin.ModelAdmin):
-    list_display=("dependencia",)
-    search_fields=("dependencia",) 
+    list_display = ("dependencia",)
+    search_fields = ("dependencia",)
+
 
 class EmpleadosAdmin(admin.ModelAdmin):
-    list_display=("nombres", "correo", "extension")
-    search_fields=("nombres","cedula") 
+    list_display = ("nombres", "cedula", "correo", "extension",  "cargo")
+    search_fields = ("nombres", "cedula", "cargo")
 
-    
 
 class DireccionesAdmin(admin.ModelAdmin):
-    list_display=("direccion", "tipos", "categoria", "macaddress","equipo", "switch", "dependencia", "empleado","observacion")
-    search_fields=("direccion", "macaddress","equipo", "observacion") 
-  
-  
-    
-    
-admin.site.site_header = 'Municipio de Loja 2021 - Direccion de Tecnologia' 
+    list_display = ("direccion", "tipos", "categoria", "macaddress",
+                    "equipo", "switch", "dependencia", "empleado", "observacion")
+    search_fields = ("direccion", "macaddress", "equipo", "observacion")
+
+
+admin.site.site_header = 'Municipio de Loja 2020-2021 - Direccion de Tecnologia'
 admin.site.register(Switches, SwitchesAdmin)
 admin.site.register(Categorias, CategoriasAdmin)
 admin.site.register(TipoDireccion, TipoDireccionAdmin)
 admin.site.register(Empleados, EmpleadosAdmin)
 admin.site.register(Dependencias, DependenciasAdmin)
-admin.site.register(Direcciones,DireccionesAdmin)
+admin.site.register(Direcciones, DireccionesAdmin)
 
+# admin.site.unregister(Group)

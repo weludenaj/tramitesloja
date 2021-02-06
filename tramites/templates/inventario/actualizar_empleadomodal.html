@@ -1,0 +1,66 @@
+<p><button class="button" data-open="Editar">Click me for a modal</button></p>
+
+<div class="reveal" id="Editar" data-reveal>
+    <h4 class="cell">
+        Modificar Empleado
+    </h4>
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <h4 class="cell">
+                Modificar Empleado
+            </h4>
+            <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
+                <div class="cell large-2">
+                    <label>Cedula</label>
+                        <!-- {{form.fechaingreso}} <input type="date"> -->
+                        {{form.cedula}}
+                </div>
+                
+                <div class="cell large-6">
+                    <label>Nombres
+                        {{form.nombres}}
+                    </label>
+                </div>    
+                
+                <div class="cell large-4">
+                    <label>E-mail:
+                        {{form.correo}}
+                    </label>
+                </div>   
+                
+                <div class="cell large-2">
+                    <label>Extension:
+                        {{form.extension}}
+                    </label>
+                </div>  
+                
+                <div class="cell large-2">
+                    <label>Celular:
+                        {{form.celular}}
+                    </label>
+                </div>
+                
+                <div class="cell large-6">
+                    <label>Cargo</label>
+                        {{form.cargo}}
+                </div>
+    
+                <div class="cell large-4">
+                    <label>ID:</label>
+                        {{form.id}}
+                </div>
+                
+                <div class="cell large-12" align = "center">
+                    <button type="submit" class="success button">Actualizar</button>
+                    <a class ="success button" href ="{% url 'Empleados' %}">Cancelar </a> 
+                  
+                </div>
+                    
+            </form>     
+        </div>
+        
+    </div>
+</div>
+
+

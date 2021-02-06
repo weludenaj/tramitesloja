@@ -1,0 +1,13 @@
+
+<h1>Lista de Switchs/h1>
+<p>
+    <form method="GET">{% csrf_token %}
+        <input type="text" id="kword" name="kword" placeholder="Ingrese nombre">
+        <button type="submit"> Consultar </button>
+    </form> 
+<ul>
+    {% for s in lista_switches %}
+        <li>{{ s.nombre}} - {{s.marca}} - {{s.ip}} - {{s.modelo}} </li>
+    {% endfor %}
+
+</ul>

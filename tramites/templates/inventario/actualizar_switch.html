@@ -1,0 +1,69 @@
+{% extends 'base_home.html' %}
+
+
+{% block title %}
+    Actualizar Switch
+    
+{% endblock title %}
+
+{% block content %}
+{% include 'header.html' %}
+
+<div class="grid-container">
+    <div class="grid-x">
+        <h4 class="cell">
+            Actualizar Switch
+        </h4>
+        <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
+            <div class="cell large-4">
+                <label>Nombre</label>
+                    <!-- {{form.fechaingreso}} <input type="date"> -->
+                    {{form.nombre}}
+            </div>
+            
+            <div class="cell large-2">
+                <label>Puertos
+                    {{form.puertos}}
+                </label>
+            </div>    
+            
+            <div class="cell large-4">
+                <label>Rack:
+                    {{form.rack}}
+                </label>
+            </div>   
+            
+            <div class="cell large-6">
+                <label>Modelo:
+                    {{form.modelo}}
+                </label>
+            </div>  
+            
+            <div class="cell large-2">
+                <label>Serial:
+                    {{form.serial}}
+                </label>
+            </div>
+            
+            <div class="cell large-6">
+                <label>Ip</label>
+                    {{form.ip}}
+            </div>
+
+            <div class="cell large-4">
+                <label>Mac:</label>
+                    {{form.mac}}
+            </div>
+            
+            <div class="cell large-12" align = "center">
+                <button type="submit" class="success button">Actualizar</button>
+                <a class ="success button" href ="{% url 'Switches' %}">Cancelar </a> 
+              
+            </div>
+                
+        </form>     
+    </div>
+    
+</div>
+
+{% endblock content %}

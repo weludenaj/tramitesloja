@@ -1,0 +1,108 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Listado de Switches
+{% endblock title %}
+   
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class= "grid-container full">
+    <div class="grid-x">
+        <h1 class= "cell">LISTADO DE SWITCHES </h1>
+
+        <form class="cell grid-x grid-margin-x" method="GET" enctype="multipart/form-data">{% csrf_token %}
+            <div class="cell large-6">
+                <input type="text" id="kword" name="kword" placeholder="Ingrese Nombre">
+            </div>
+            <div class="cell large-2">
+                <button type="submit" class="success button">Buscar </button>
+            </div>
+        </form> 
+
+        <div class="cell">
+            <table class= "hover">
+                <thead>
+                    <tr> 
+                    <th width="50">Nro</th>
+                    <th width="200">Nombre</th>
+                    <th width="50">Puertos</th>
+                    <th width="180">Rack</th>
+                    <th width="100">Marca</th>
+                    <th width="150">Modelo</th>
+                    <th width="150">Serial</th>
+                    <th width="150">IP</th>
+                    <th width="250">MAC</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    {% for s in lista_switches %}  
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{s.nombre}}</td>
+                        <td>{{s.puertos}}</td>
+                        <td>{{s.rack}}</td>
+                        <td>{{s.marca}}</td>
+                        <td>{{s.modelo}}</td>
+                        <td>{{s.serial}}</td>
+                        <td>{{s.ip}}</td>
+                        <td>{{s.mac}}</td>
+                        <td><a class="button warning" href="{% url 'ip_switch' s.nombre %}">Editar</a></td>
+                        <!-- <td><button class="button" data-open="exampleModal1">Editar</button></td> -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="cell">
+                {% if is_paginated %}
+                    <nav aria-label="Pagination">
+                        <ul class="pagination">
+                            {% if page_obj.has_previous %}
+                                <li class="pagination-previous">
+                                <a href="?page={{page_obj.previous_page_number}}">Atras </a>
+                                </li>
+                                {% if page_obj.number > 5 %}
+                                    <li class="pagination.num_pages">
+                                    <a href="?page=1">1</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                            
+                            {% for pagina in paginator.page_range %}
+                                {% ifequal pagina page_obj.number  %}
+                                    <li class="current"><span class="show-for-sr">Pagina Nro</span> {{pagina}}</li>
+                                {% else %}
+                                    {% if pagina > page_obj.number|add:'-5' and pagina < page_obj.number|add:'5'%}
+                                        <li>
+                                            <a href="?page={{pagina}}">{{ pagina }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endifequal %} 
+                            {% endfor %}
+                            
+                            {% if page_obj.has_next %}
+                                <li class="ellipsis" aria-hidden="true"></li> 
+                                <li class="pagination.num_pages">
+                                <a href="?page={{page_obj.paginator.num_pages}}">{{ page_obj.paginator.num_pages}}</a>
+                                </li>
+                            {% if page_obj.number > 5 %}
+                                <li class="pagination-next">
+                                    <a href="?page={{page_obj.next_page_number}}">Siguiente </a> 
+                                </li>
+                            {% endif %}
+                            {% endif %}
+                
+                            
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        
+{% endblock content %}

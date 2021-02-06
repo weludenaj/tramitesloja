@@ -1,0 +1,26 @@
+{% extends 'base_home.html' %}
+
+{% block title %}
+    Añadir nuevo Switch
+{% endblock title %}
+   
+{% block content %}
+
+{% include 'header.html' %}
+
+<div class= "grid-container">
+    <div class="grid-x">
+        <h1 class= "cell">Agregar nuevo Switch</h1>
+        <form method="POST">{% csrf_token %}
+            {{form.as_p}}
+            <button type="submit">Guardar</button>
+        </form>
+
+       
+
+    </div>
+
+
+</div>
+
+{% endblock content %}
