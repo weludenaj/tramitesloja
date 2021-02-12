@@ -12,12 +12,13 @@ urlpatterns = [
         views.InicioView.as_view(),
         name='inicio'
     ),
-    path('login/',
-         auth_views.LoginView.as_view(
-             template_name='base/login.html'
-         ),
-         name='login'
-         ),
+    path(
+        'login/',
+        auth_views.LoginView.as_view(
+            template_name='base/login.html'
+        ),
+        name='login'
+    ),
     path(
         'externos/',
         views.ListExternos.as_view(),
@@ -33,17 +34,20 @@ urlpatterns = [
         views.addregister.as_view(),
         name="insertar"
     ),
-    path('actualizar/<pk>/',
-         views.rexternosupdate.as_view(),
-         name='modificar_registro'
-         ),
-    path('borrar/<pk>/',
-         views.borrarregistro.as_view(),
-         name='borrar_registro'
-         ),
-    path('success/',
-         views.SuccessView.as_view(),
-         name='correcto'
-         ),
+    path(
+        'actualizar/<pk>/',
+        views.rexternosupdate.as_view(),
+        name='modificar_registro'
+    ),
+    path(
+        'borrar/<pk>/',
+        views.borrarregistro.as_view(),
+        name='borrar_registro'
+    ),
+    path(
+        'success/',
+        views.SuccessView.as_view(),
+        name='correcto'
+    ),
 
 ]

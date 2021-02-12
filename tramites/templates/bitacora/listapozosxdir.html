@@ -1,7 +1,7 @@
 {% extends 'base_home.html' %}
 
 {% block title %}
-    Listado de Switches
+    Listado de Pozos
 {% endblock title %}
    
 {% block content %}
@@ -10,45 +10,31 @@
 
 <div class= "grid-container full">
     <div class="grid-x">
-        <h1 class= "cell">LISTADO DE SWITCHES </h1>
-
-        <form class="cell grid-x grid-margin-x" method="GET" enctype="multipart/form-data">{% csrf_token %}
-            <div class="cell large-6">
-                <input type="text" id="kword" name="kword" placeholder="Ingrese Nombre">
-            </div>
-            <div class="cell large-2">
-                <button type="submit" class="success button">Buscar </button>
-            </div>
-        </form> 
-
+        
+        <h4 class= "cell">LISTADO DE POZOS</h4>
         <div class="cell">
             <table class= "hover">
                 <thead>
                     <tr> 
                     <th width="50">Nro</th>
-                    <th width="200">Nombre</th>
-                    <th width="50">Puertos</th>
-                    <th width="180">Rack</th>
-                    <th width="100">Marca</th>
-                    <th width="150">Modelo</th>
-                    <th width="150">Serial</th>
-                    <th width="150">IP</th>
-                    <th width="250">MAC</th>
+                    <th width="200">Pozo Numero</th>
+                    <th width="50">Direccion</th>
+                    <th width="180">Posicion</th>
+                    <th width="100">Tipo</th>
+                    <th width="150">Observación</th>
                     </tr> 
                 </thead>
                 <tbody>
-                    {% for s in lista_switches %}  
+                    {% for p in lista_pozos %}  
                     <tr>
                         <td>{{forloop.counter}}</td>
-                        <td>{{s.nombre}}</td>
-                        <td>{{s.puertos}}</td>
-                        <td>{{s.rack}}</td>
-                        <td>{{s.marca}}</td>
-                        <td>{{s.modelo}}</td>
-                        <td>{{s.serial}}</td>
-                        <td>{{s.ip}}</td>
-                        <td>{{s.mac}}</td>
-                        <td><a class="button warning" href="{% url 'inventario_app:ip_switch' s.nombre %}">Editar</a></td>
+                        <td>{{p.numero}}</td>
+                        <td>{{p.direccion}}</td>
+                        <td>{{p.get_posicion_display}}</td>
+                        <td>{{p.get_tipos_display}}</td>
+                        <td>{{p.observacion}}</td>
+                        
+                        <td><a class="button warning" href="#">Editar</a></td>
                         <!-- <td><button class="button" data-open="exampleModal1">Editar</button></td> -->
                     </tr>
                     {% endfor %}

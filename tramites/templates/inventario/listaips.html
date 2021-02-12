@@ -5,7 +5,7 @@
 
 <div class="grid-container full">
 <h4 class="cell" align="center"> LISTADO DE IPS</h4>
-<div class="grid-x" style="border:1px solid rgb(223, 89, 89);">
+<div class="grid-x grid-margin-x">
   <form class= "cell grid-x grid-margin-x"  method="GET">{% csrf_token %}
     <div class="cell large-4">
       <input type="text" id="kword" name="kword" placeholder="Ingrese Dirección IP">
@@ -14,8 +14,10 @@
       <button type="submit" class="success button">Consultar</button>
     </div>
   </form> 
-  
-  <div class="cell large-12">
+</div>  
+
+<div class="grid-x grid-margin-x">
+  <div class="cell grid-x grid-margin-x">
     <table class="hover">
       <thead>
         <tr>
@@ -48,7 +50,7 @@
             <td>{{registro.dependencia}}</td>
             <td>{{registro.empleado}}</td>
             <td>{{registro.observacion}}</td>
-            <td><a class="button warning" href="{% url 'modificar_ip' registro.id %}">Editar</a></td>
+            <td><a class="button warning" href="{% url 'inventario_app:modificar_ip' registro.id %}">Editar</a></td>
           </tr>
                     
         {% endfor %}

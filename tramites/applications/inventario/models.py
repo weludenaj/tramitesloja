@@ -5,9 +5,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.deletion import CASCADE
 
-from .managers import DireccionesManager, EmpleadosManager, SwitchesManager
 
 # Create your models here.
+
+from .managers import DireccionesManager, EmpleadosManager, SwitchesManager
 
 
 class ClaseModelo(models.Model):

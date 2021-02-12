@@ -32,7 +32,7 @@ class DireccionesNew(LoginRequiredMixin, CreateView):
     template_name = 'inventario/adddireccion.html'
     context_object_name = 'obj'
     form_class = DireccionesForm
-    success_url = reverse_lazy('Ips')
+    success_url = reverse_lazy('inventario_app:Ips')
     login_url = '/admin'
 
     def form_valid(self, form):
@@ -67,7 +67,7 @@ class CrearSwitch(CreateView):
     model = Switches
     fields = ['nombre', 'puertos', 'rack',
               'marca', 'modelo', 'serial', 'ip', 'mac']
-    success_url = '/'
+    success_url = 'inventario_app:switches'
 
 
 class IpUpdate(UpdateView):
@@ -86,7 +86,7 @@ class IpUpdate(UpdateView):
         'observacion',
     ]
     # fields = ('__all__')
-    success_url = reverse_lazy('Ips')
+    success_url = reverse_lazy('inventario_app:Ips')
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -112,7 +112,7 @@ class EmpleadoUpdate(UpdateView):
         'id',
     ]
     # fields = ('__all__')
-    success_url = reverse_lazy('Empleados')
+    success_url = reverse_lazy('inventario_app:Empleados')
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -138,7 +138,7 @@ class EmpleadoUpdate2(UpdateView):
         'id',
     ]
     # fields = ('__all__')
-    success_url = reverse_lazy('Empleados')
+    success_url = reverse_lazy('inventario_app:Empleados')
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()

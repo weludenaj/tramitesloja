@@ -2,63 +2,56 @@
 
 
 {% block title %}
-    Editar Empleado
+    Editar Pozo
     
 {% endblock title %}
+    
 
 {% block content %}
 {% include 'header.html' %}
 
+
 <div class="grid-container">
     <div class="grid-x">
         <h4 class="cell">
-            Modificar Empleado
+            Actualizar Pozo 
         </h4>
         <form class="cell callout grid-x grid-margin-x" method="POST">{% csrf_token %}
             <div class="cell large-2">
-                <label>Cedula</label>
+                <label>Numero de Pozo</label>
                     <!-- {{form.fechaingreso}} <input type="date"> -->
-                    {{form.cedula}}
+                    {{form.numero}}
             </div>
             
             <div class="cell large-6">
-                <label>Nombres
-                    {{form.nombres}}
+                <label>Direccion
+                    {{form.direccion}}
                 </label>
             </div>    
             
-            <div class="cell large-4">
-                <label>E-mail:
-                    {{form.correo}}
+            <div class="cell large-2">
+                <label>Ubicacion:
+                    {{form.posicion}}
                 </label>
             </div>   
             
-            <div class="cell large-2">
-                <label>Extension:
-                    {{form.extension}}
+            <div class="cell medium-2">
+                <label>Tipo de Pozo:
+                    {{form.tipos}}
                 </label>
             </div>  
             
-            <div class="cell large-2">
-                <label>Celular:
-                    {{form.celular}}
+            <div class="cell large-12">
+                <label>Observacion:
+                    {{form.observacion}}
                 </label>
             </div>
             
-            <div class="cell large-6">
-                <label>Cargo</label>
-                    {{form.cargo}}
-            </div>
-
-            <div class="cell large-4">
-                <label>ID:</label>
-                    {{form.id}}
-            </div>
-            
+                        
             <div class="cell large-12" align = "center">
                 <button type="submit" class="success button">Actualizar</button>
-                <a class ="success button" href ="{% url 'inventario_app:Empleados' %}">Cancelar </a> 
-              
+                <a class ="success button" href ="{% url 'bitacora_app:pozos_lista' %}">Cancelar </a>
+                
             </div>
                 
         </form>     

@@ -42,7 +42,7 @@
                         <td>{{e.correo}}</td>
                         <td>{{e.celular}}</td>
                         <td>{{e.cargo}}</td>
-                        <td><a class="button warning" href="{% url 'modificar_empleado2' e.id %}">Editar</a></td>
+                        <td><a class="button warning" href="{% url 'inventario_app:modificar_empleado2' e.id %}">Editar</a></td>
                         <!-- <td><button class="button" data-open="exampleModal1">Editar</button></td> -->
                     </tr>
                     {% endfor %}

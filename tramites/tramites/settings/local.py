@@ -13,9 +13,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dbarchivo',
-        'USER' : 'secretaria',
+        'USER': 'secretaria',
         'PASSWORD': 'Alcaldi@Loja2020$$',
-        'HOST':'127.0.0.1',
+        'HOST': '127.0.0.1',
         'DATABASE_PORT': '5432',
     }
 }
@@ -28,4 +28,4 @@ DATABASES = {
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR.child('static')]
 MEDIA_URL = '/media/'
-MEDIA_ROOT = 'media'
+MEDIA_ROOT = BASE_DIR.child('media')

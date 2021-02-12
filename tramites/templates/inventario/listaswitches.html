@@ -48,7 +48,7 @@
                         <td>{{s.serial}}</td>
                         <td>{{s.ip}}</td>
                         <td>{{s.mac}}</td>
-                        <td><a class="button warning" href="{% url 'modificar_switch' s.id %}">Editar</a></td>
+                        <td><a class="button warning" href="{% url 'inventario_app:modificar_switch' s.id %}">Editar</a></td>
                         <!-- <td><button class="button" data-open="exampleModal1">Editar</button></td> -->
                     </tr>
                     {% endfor %}

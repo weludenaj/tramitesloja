@@ -3,11 +3,21 @@
 {% block title %}
     Añadir nuevo trámite
 {% endblock title %}
-   
+
 {% block content %}
 
 {% include 'header.html' %}
 
+    <!-- fechaingreso=models.DateField(null=False, blank=False, verbose_name="Fecha")
+    guianro=models.CharField(max_length=20, verbose_name="Tramite Nro", null=False, blank=False, unique=False)
+    usuario=models.CharField(max_length=200, verbose_name="Usuario", null=False, blank=False)
+    descripcion=models.TextField(max_length=500, verbose_name="Descripcion", null=False, blank=False)
+    oficio=models.CharField(max_length=50, verbose_name="Numero Oficio", null=True, blank=True)
+    fechaentrega=models.DateField(null=True, blank=True, verbose_name="Fecha Entrega")
+    enviadoa=models.TextField(null=True, blank=True,max_length=350, verbose_name="Enviado a")
+    observacion=models.TextField(null=True, blank=True, verbose_name="Observacion")
+    atendido=models.BooleanField('Atendido', default=False)
+    documentos=models.FileField(upload_to='media', blank=True, null=True) -->
 <div class= "grid-container">
     <div class="grid-x">
         <h1 class= "cell">Agregar nuevo trámite</h1>

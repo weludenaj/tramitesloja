@@ -46,7 +46,7 @@
               <td>{{registro.oficio}}</td>
               <td>{{registro.fechaentrega}}</td>
               <td>{{registro.enviadoa}}</td>
-              <td><a class="button warning" href="{% url 'modificar_registro' registro.id %}">Editar</a> <a class="button alert" href="{% url 'borrar_registro' registro.id %}">Borrar</a></td>
+              <td><a class="button warning" href="{% url 'externos_app:modificar_registro' registro.id %}">Editar</a> <a class="button alert" href="{% url 'externos_app:borrar_registro' registro.id %}">Borrar</a></td>
             </tr>
                       
           {% endfor %}
