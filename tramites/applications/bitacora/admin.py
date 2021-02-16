@@ -35,7 +35,7 @@ class pozosAdmin(admin.ModelAdmin):
 class bitacoraAdmin(admin.ModelAdmin):
     list_display = ("fecha", "empresa", "direccion", "tecnico",
                     "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion")
-    search_fields = ("fecha", "tecnico", "ingreso",
+    search_fields = ("fecha", "empresa__empresa", "direccion__direccion", "tecnico", "ingreso",
                      "salida", "observacion", )
     date_hierarchy = "fecha"
 
@@ -64,10 +64,12 @@ class bitacoraAdmin(admin.ModelAdmin):
 
         lista = pozos.objects.filter(
             direccion__id=direccion_id
+        ).values_list(
+            'numero', 'direccion_id',
         )
         listas = ''
         for p in lista:
-            listas = p.numero + ' , ' + listas
+            listas = p[0] + ' , ' + listas
 
         return listas
 

@@ -35,7 +35,8 @@ class pozosManager(models.Manager):
 
     def buscar_pozos(self, kword):
         resultado = self.filter(
-            Q(numero__icontains=kword) | Q(observacion__icontains=kword)
+            Q(numero__icontains=kword) | Q(observacion__icontains=kword) | Q(
+                direccion__direccion__icontains=kword)
         )
         return resultado
 

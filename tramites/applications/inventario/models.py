@@ -124,7 +124,8 @@ class Direcciones(ClaseModelo):
     puerto = models.PositiveSmallIntegerField(
         verbose_name='Puerto', default=1, null=True, blank=True)
     dependencia = models.ForeignKey(Dependencias, on_delete=CASCADE, default=1)
-    empleado = models.ForeignKey(Empleados, on_delete=CASCADE, default=1)
+    empleado = models.ForeignKey(
+        Empleados, on_delete=CASCADE, default=1, related_name='empleado_direccion')
     observacion = models.TextField(verbose_name='Observacion')
 
     objects = DireccionesManager()

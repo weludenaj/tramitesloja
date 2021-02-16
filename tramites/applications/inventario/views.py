@@ -27,6 +27,17 @@ class ListIps(LoginRequiredMixin, ListView):
         return Direcciones.objects.buscar_ip1(palabra_clave)
 
 
+class ListIpsEmpleado(ListView):
+    context_object_name = 'lista_ips_empleado'
+    template_name = 'inventario/listaipsempleado.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        palabra_clave = self.request.GET.get("kword", '')
+
+        return Direcciones.objects.listar_ips_empleado(palabra_clave)
+
+
 class DireccionesNew(LoginRequiredMixin, CreateView):
     model = Direcciones
     template_name = 'inventario/adddireccion.html'

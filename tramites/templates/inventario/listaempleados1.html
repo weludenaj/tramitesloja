@@ -3,14 +3,14 @@
 {% block title %}
     Listado de Switches
 {% endblock title %}
-   
 
 
 {% include 'header.html' %}
 {% block content %}
+    
 <div class= "grid-container full">
     <div class="grid-x">
-        <h1 class= "cell">LISTADO DE EMPLEADOS</h1>
+        <h1 class= "cell">LISTADO DE EMPLEADOS {{lista_empleados.count}}</h1>
 
           <form class="cell grid-x grid-margin-x" method="GET" enctype="multipart/form-data">{% csrf_token %}
             <div class="cell large-5">
@@ -43,6 +43,7 @@
                         <td>{{e.celular}}</td>
                         <td>{{e.cargo}}</td>
                         <td><a class="button warning" href="{% url 'inventario_app:modificar_empleado2' e.id %}">Editar</a></td>
+                        <td><a class="button warning" onclick = "return abrir_crear_permiso('{% url 'inventario_app:modificar_empleado2' e.id %}')">Probar</a></td>
                         <!-- <td><button class="button" data-open="exampleModal1">Editar</button></td> -->
                     </tr>
                     {% endfor %}

@@ -20,6 +20,12 @@ class DireccionesManager(models.Manager):
         ).exclude(id=1)
         return resultado
 
+    def listar_ips_empleado(self, empleado):
+
+        return self.filter(
+            Empleado__id=empleado
+        ).order_by('direccion')
+
 
 class EmpleadosManager(models.Manager):
 
@@ -29,6 +35,12 @@ class EmpleadosManager(models.Manager):
                 correo__icontains=kword) | Q(cargo__icontains=kword)
         ).exclude(id=1)
         return resultado
+
+    def empleado_por_ip(self, direcciones):
+
+        return self.filter(
+            empleado_direccion__empleado__id=direcciones
+        )
 
 
 class SwitchesManager(models.Manager):

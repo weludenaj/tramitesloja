@@ -12,3 +12,39 @@
         <li>{{e.usuario}} - {{e.guianro}} - {{e.fechaingreso}}</li>
     {% endfor %}
 </ul>
+
+<div class="cell">
+    {% if is_paginated %}
+    <nav aria-label="Pagination">
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+          <li class="pagination-previous">
+            <a href="?page={{page_obj.previous_page_number}}"></a>Atras 
+          </li>
+          {% endif %}
+          
+          {% for pagina in paginator.page_range %}
+           
+            {% ifequal pagina page_obj.number  %}
+              <li class="current"><span class="show-for-sr">Pagina Nro</span> {{pagina}}</li>
+            {% else %}
+              {% if pagina > page_obj.number|add:'-3' and pagina < page_obj.number|add:'3'%}
+                <li>
+                  <a href="?page={{pagina}}">{{ pagina }}</a>
+                </li>
+              {% endif %}
+            {% endifequal %} 
+            <!-- <li class="ellipsis" aria-hidden="true"></li> -->
+          {% endfor %}
+          
+          {% if page_obj.has_next %}
+          <li class="pagination-next">
+            <a href="?page={{page_obj.next_page_number}}"></a>Siguiente 
+          </li>
+          {% endif %}
+
+          
+        </ul>
+    </nav>
+    {% endif %}
+  </div>

@@ -22,6 +22,7 @@ class ListExternos(ListView):
 
     context_object_name = 'lista_externos'
     template_name = 'externos/lista.html'
+    paginate_by = 50
 
     def get_queryset(self):
         palabra_clave = self.request.GET.get("kword", '')

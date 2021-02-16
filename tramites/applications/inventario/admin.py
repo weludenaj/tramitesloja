@@ -1,11 +1,3 @@
-from enum import unique
-from django.contrib import admin
-
-# Register your models here.
-from django.contrib.auth.models import Group, User
-from datetime import datetime, date, time, timedelta
-
-# Register your models here.
 from .models import (
     Switches,
     TipoDireccion,
@@ -14,6 +6,23 @@ from .models import (
     Empleados,
     Dependencias,
 )
+from enum import unique
+from django.contrib import admin
+
+# Register your models here.
+from django.contrib.auth.models import Group, User
+from datetime import datetime, date, time, timedelta
+
+
+# class ClaseModelo(models.Model):
+#     estado = models.BooleanField(default=True)
+#     fc = models.DateTimeField(auto_now_add=True)
+#     fm = models.DateTimeField(auto_now=True, blank=True, null=True)
+#     uc = models.ForeignKey(User, on_delete=models.CASCADE)
+#     um = models.IntegerField(blank=True, null=True)
+
+
+# Register your models here.
 
 
 class SwitchesAdmin(admin.ModelAdmin):
@@ -48,10 +57,21 @@ class EmpleadosAdmin(admin.ModelAdmin):
 class DireccionesAdmin(admin.ModelAdmin):
     list_display = ("direccion", "tipos", "categoria", "macaddress",
                     "equipo", "switch", "dependencia", "empleado", "observacion")
-    search_fields = ("direccion", "macaddress", "equipo", "observacion")
+    search_fields = ("direccion", "macaddress", "equipo",
+                     "observacion", "empleado__nombres", "dependencia__dependencia", "switch__nombre")
+    readonly_fields = ('um', 'uc')
+
+    def save_model(self, request, obj, form, change):
+        print(obj.um)
+        print(request.user.id)
+        if request.user.id != 1:
+            obj.um = request.user.id
+        obj.save()
 
 
 admin.site.site_header = 'Municipio de Loja 2020-2021 - Direccion de Tecnologia'
+#admin.site.site_title = 'Alcaldia Loja'
+admin.site.index_title = 'Alcaldia Loja'
 admin.site.register(Switches, SwitchesAdmin)
 admin.site.register(Categorias, CategoriasAdmin)
 admin.site.register(TipoDireccion, TipoDireccionAdmin)
