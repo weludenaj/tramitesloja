@@ -8,7 +8,8 @@ class DireccionesManager(models.Manager):
 
     def buscar_ip(self, kword):
         resultado = self.filter(
-            Q(direccion__icontains=kword) | Q(observacion__icontains=kword)
+            Q(direccion__icontains=kword) | Q(observacion__icontains=kword) | Q(
+                direccion__dependencia=kword) | Q(direccion__empleado=kword)
         )
         return resultado
 
@@ -16,8 +17,9 @@ class DireccionesManager(models.Manager):
 
     def buscar_ip1(self, kword):
         resultado = self.filter(
-            Q(direccion__icontains=kword) | Q(observacion__icontains=kword)
-        ).exclude(id=1)
+            Q(direccion__icontains=kword) | Q(observacion__icontains=kword) | Q(direccion__icontains=kword) | Q(observacion__icontains=kword) | Q(
+                dependencia__dependencia__icontains=kword) | Q(empleado__nombres__icontains=kword)
+        ).exclude(id=1).order_by('id')
         return resultado
 
     def listar_ips_empleado(self, empleado):

@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.contrib import messages
+
 from .models import Direcciones, Empleados, Switches
 
 from .forms import DireccionesForm
@@ -48,6 +50,8 @@ class DireccionesNew(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.uc = self.request.user
+        messages.success(
+            self.request, f'Has creado correctamente la direccion {Direcciones.direccion}')
         return super().form_valid(form)
 
 
@@ -82,7 +86,7 @@ class CrearSwitch(CreateView):
 
 
 class IpUpdate(UpdateView):
-    template_name = "inventario/actualizar_ip.html"
+    template_name = "inventario/actualizar_modal.html"
     model = Direcciones
     fields = [
         'direccion',

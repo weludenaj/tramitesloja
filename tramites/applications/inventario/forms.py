@@ -9,20 +9,20 @@ class DireccionesForm(forms.ModelForm):
     class Meta:
         model = Direcciones
         fields = ['direccion', 'tipos', 'categoria', 'equipo', 'switch', 'puerto',
-                  'dependencia', 'empleado', 'observacion', 'estado', 'macaddress']
+                  'dependencia', 'empleado', 'observacion', 'estado', 'macaddress', 'id']
         # fields = ('__all__')
         labels = {'direccion': "Ingrese Direccion IP",
                   'estado': "Estado",
                   'macaddress': "Ingrese MAC"}
         widgets = {'direccion': forms.TextInput(
             attrs={
-                'placeholder': 'Ingrese  Direccion Ip Ejemplo 192.168.1.12'
+                'placeholder': 'Ingrese  Direccion Ip: 192.168.1.12'
             }
         ),
             'estado': forms.CheckboxInput,
             'macaddress': forms.TextInput(
             attrs={
-                'placeholder': 'Ingrese  MAC ejemplo 00:00:00:00:00:00'}),
+                'placeholder': 'Ingrese  MAC: 00:00:00:00:00:00'}),
         }
 
     def clean_puerto(self):

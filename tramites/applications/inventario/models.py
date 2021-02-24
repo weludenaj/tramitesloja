@@ -52,12 +52,22 @@ class Switches(ClaseModelo):
 class TipoDireccion(models.Model):
     tipo = models.CharField(verbose_name='Tipo', max_length=50)
 
+    class Meta:
+        verbose_name = 'Tipos Dirección'
+        verbose_name_plural = 'Tipos de Direcciones'
+        ordering = ['tipo', ]
+
     def __str__(self):
         return self.tipo
 
 
 class Categorias(models.Model):
     categoria = models.CharField(verbose_name='Categoria', max_length=150)
+
+    class Meta:
+        verbose_name = 'Categoria'
+        verbose_name_plural = 'Categorias'
+        ordering = ['categoria', ]
 
     def __str__(self):
         return self.categoria
@@ -95,7 +105,7 @@ class Empleados(ClaseModelo):
     objects = EmpleadosManager()
 
     def __str__(self):
-        return '{}:{}'.format(self.nombres, self.cedula)
+        return '{}:{}'.format(self.nombres, self.cargo)
 
     def save(self):
         self.nombres = self.nombres.upper()
@@ -137,6 +147,11 @@ class Direcciones(ClaseModelo):
 
     def __str__(self):
         return '{}'.format(self.direccion)
+
+    def save(self):
+        if self.macaddress != None:
+            self.macaddress = self.macaddress.upper()
+        super(Direcciones, self).save()
 
 
 class contrasenias(ClaseModelo):

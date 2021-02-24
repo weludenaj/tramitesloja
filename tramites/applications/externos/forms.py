@@ -1,5 +1,8 @@
 from django import forms
+from ckeditor.fields import RichTextField
+from ckeditor.widgets import CKEditorWidget
 from .models import rexternos
+
 
 from ckeditor.fields import RichTextField
 from ckeditor.widgets import CKEditorWidget
