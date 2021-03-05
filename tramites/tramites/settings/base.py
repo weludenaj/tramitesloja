@@ -24,8 +24,6 @@ BASE_DIR = Path(__file__).ancestor(3)
 SECRET_KEY = 'nxjsrn0otw=xbfujb+5#=hzezfo52#j6pai(n0qvi0lz4v(le@'
 
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,6 +37,7 @@ INSTALLED_APPS = [
     'applications.internos',
     'applications.bitacora',
     'applications.inventario',
+    'applications.informatica',
     'ckeditor',
 ]
 
@@ -57,7 +56,7 @@ ROOT_URLCONF = 'tramites.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR.child('templates')] ,
+        'DIRS': [BASE_DIR.child('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

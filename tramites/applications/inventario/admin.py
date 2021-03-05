@@ -55,8 +55,8 @@ class EmpleadosAdmin(admin.ModelAdmin):
 
 
 class DireccionesAdmin(admin.ModelAdmin):
-    list_display = ("direccion", "estado", "categoria", "macaddress",
-                    "equipo", "switch", "puerto", "dependencia", "empleado", "observacion")
+    list_display = ("direccion", "estado", "empleado", "categoria", "macaddress",
+                    "equipo", "switch", "puerto", "dependencia", "observacion")
     search_fields = ("direccion", "macaddress", "equipo",
                      "observacion", "empleado__nombres", "dependencia__dependencia", "switch__nombre", "categoria__categoria")
     list_filter = ("estado", "switch", "categoria")
