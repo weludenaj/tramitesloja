@@ -60,12 +60,14 @@ class TramitesInformatica(ClaseModelo):
         max_length=30, verbose_name="Memorando Nro", null=False, blank=False, unique=False)
     usuario = models.CharField(
         max_length=200, verbose_name="Usuario", null=False, blank=False)
-    dependencia = models.ForeignKey(Dependencias, on_delete=models.CASCADE)
+    dependencia = models.ForeignKey(
+        Dependencias, on_delete=models.CASCADE, default=1)
     asunto = models.TextField(
         max_length=500, verbose_name="Asunto", null=False, blank=False)
     descripcion = models.TextField(
         verbose_name="Descripcion Breve", null=True, blank=True)
-    asignado = models.ForeignKey(Informatica, on_delete=models.CASCADE)
+    asignado = models.ForeignKey(
+        Informatica, on_delete=models.CASCADE, default=41)
     fechaasignado = models.DateField(
         null=True, blank=True, verbose_name="Asignado el")
     fechaatendido = models.DateField(
