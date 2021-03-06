@@ -34,7 +34,7 @@ class rinternos(models.Model):
         null=True, blank=True, verbose_name="Fecha Despacho")
     enviadoa = models.TextField(
         null=True, blank=True, max_length=250, verbose_name="Enviado a")
-    observacion = RichTextField(
+    observacion = models.TextField(
         null=True, blank=True, max_length=500, verbose_name="Observacion")
     atendido = models.BooleanField('Atendido', default=False)
     documentos = models.FileField(upload_to='media', blank=True, null=True)

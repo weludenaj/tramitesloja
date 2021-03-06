@@ -35,6 +35,17 @@ class pozosAdmin(admin.ModelAdmin):
 class bitacoraAdmin(admin.ModelAdmin):
     list_display = ("fecha", "empresa", "direccion", "tecnico",
                     "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion")
+    # fields = [("fecha", "empresa"), "direccion", "tecnico",
+    #   "ingreso", "salida", "observacion"]
+    fieldsets = (
+        (None, {
+            'fields': [("fecha", "empresa"), "direccion", "tecnico", ]
+        }),
+        ('Registro', {
+            'fields': ("ingreso", "salida", "observacion")
+        }),
+
+    )
     search_fields = ("fecha", "empresa__empresa", "direccion__direccion", "tecnico", "ingreso",
                      "salida", "observacion", )
     date_hierarchy = "fecha"
