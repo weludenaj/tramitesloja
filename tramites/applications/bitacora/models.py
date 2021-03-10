@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.fields.related import ForeignKey
 
 from .managers import pozosManager
 
@@ -81,7 +82,7 @@ class pozos(models.Model):
     ##  unique_together =('fechaingreso', 'guianro')
 
     def __str__(self):
-        return 'Numero %s Direccion %s Posicion %s Tipo %s Observacion %s' % (self.numero, self.direccion, self.posicion, self.tipo, self.observacion)
+        return '{} : {} : {}'.format(self.numero, self.direccion, self.id)
 
 
 class bitacora(models.Model):
@@ -96,6 +97,7 @@ class bitacora(models.Model):
         verbose_name='Ingresa a', auto_now=False, auto_now_add=False)
     salida = models.TimeField(
         verbose_name='Sale a', auto_now=False, auto_now_add=False, null=True, blank=True,)
+    pozo = models.ForeignKey(pozos, on_delete=models.CASCADE, default=170)
     observacion = models.TextField(
         verbose_name='Observaciones', null=True, blank=True)
 

@@ -61,13 +61,16 @@ class TramitesInformatica(ClaseModelo):
     usuario = models.CharField(
         max_length=200, verbose_name="Usuario", null=False, blank=False)
     dependencia = models.ForeignKey(
-        Dependencias, on_delete=models.CASCADE, default=1)
+        Dependencias, on_delete=models.CASCADE, default=1, verbose_name="De Dependencia",)
     asunto = models.TextField(
         max_length=500, verbose_name="Asunto", null=False, blank=False)
     descripcion = models.TextField(
         verbose_name="Descripcion Breve", null=True, blank=True)
     asignado = models.ForeignKey(
-        Informatica, on_delete=models.CASCADE, default=41)
+        Informatica,
+        on_delete=models.CASCADE,
+        default=41,
+        verbose_name="Asignado a")
     fechaasignado = models.DateField(
         null=True, blank=True, verbose_name="Asignado el")
     fechaatendido = models.DateField(

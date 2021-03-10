@@ -33,13 +33,13 @@ class pozosAdmin(admin.ModelAdmin):
 
 
 class bitacoraAdmin(admin.ModelAdmin):
-    list_display = ("fecha", "empresa", "direccion", "tecnico",
+    list_display = ("fecha", "empresa", "tecnico", "pozo",
                     "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion")
     # fields = [("fecha", "empresa"), "direccion", "tecnico",
     #   "ingreso", "salida", "observacion"]
     fieldsets = (
         (None, {
-            'fields': [("fecha", "empresa"), "direccion", "tecnico", ]
+            'fields': [("fecha", "empresa"), "pozo", "tecnico", ]
         }),
         ('Registro', {
             'fields': ("ingreso", "salida", "observacion")
@@ -70,6 +70,14 @@ class bitacoraAdmin(admin.ModelAdmin):
         # print(ssalida)
         return tiempo
 
+    def direc(self, obj):
+        pozo_id = obj.pozo_id
+        print(pozo_id)
+        direccion = pozos.objects.filter(
+            id=pozo_id
+        ).values_list('direccion_id')
+        return direccion[0]
+
     def PozosDetalle(self, obj):
         direccion_id = obj.direccion_id
 
@@ -79,10 +87,28 @@ class bitacoraAdmin(admin.ModelAdmin):
             'numero', 'direccion_id',
         )
         listas = ''
+        # print(lista)
         for p in lista:
             listas = p[0] + ' , ' + listas
 
         return listas
+
+    def save_model(self, request, obj, form, change):
+        # print(obj.uc)
+        pozo_id = obj.pozo_id
+
+        direccion = pozos.objects.filter(
+            id=pozo_id
+        ).values_list('direccion_id')
+       # print(direccion['id'])
+       # print(type(direccion))
+        ipdireccion = 0
+        for p in direccion:
+            ipdireccion = p[0]
+        # print(ipdireccion)
+        obj.direccion_id = ipdireccion
+
+        obj.save()
 
 
 admin.site.site_header = 'Municipio de Loja 2020'
