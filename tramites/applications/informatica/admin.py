@@ -21,7 +21,7 @@ class InformaticaAdmin(admin.ModelAdmin):
 
 class TramitesInformaticaAdmin(admin.ModelAdmin):
 
-    list_display = ('fecha', 'guianro', 'usuario', 'dependencia', 'asunto', 'descripcions',
+    list_display = ('fecha', 'guianro', 'usuario', 'dependencia', 'asunto', 'descripcion',
                     'asignado', 'fechaasignado', 'fechaatendido', 'observacion', 'fase', )
     #list_display_links = ('fecha', 'guianro')
     #list_display_links = None
@@ -36,7 +36,7 @@ class TramitesInformaticaAdmin(admin.ModelAdmin):
 
     def descripcions(self, obj):
         descrip = obj.descripcion
-        descrip = descrip[0:150]
+        descrip = descrip[0:90]
         # print(descrip)
         return descrip
 

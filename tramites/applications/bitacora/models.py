@@ -82,7 +82,7 @@ class pozos(models.Model):
     ##  unique_together =('fechaingreso', 'guianro')
 
     def __str__(self):
-        return '{} : {}'.format(self.numero, self.direccion)
+        return '{} : {} : {}'.format(self.numero, self.direccion, self.id)
 
 
 class bitacora(models.Model):

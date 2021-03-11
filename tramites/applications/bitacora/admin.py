@@ -28,13 +28,13 @@ class direccionesAdmin(admin.ModelAdmin):
 
 class pozosAdmin(admin.ModelAdmin):
     list_display = ("numero", "direccion", "posicion", "tipos", "observacion")
-    search_fields = ("numero", "observacion", "direccion__direccion")
+    search_fields = ("numero", "observacion")
     list_filter = ("direccion",)
 
 
 class bitacoraAdmin(admin.ModelAdmin):
     list_display = ("fecha", "empresa", "tecnico", "pozo",
-                    "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion", "direccion")
+                    "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion")
     # fields = [("fecha", "empresa"), "direccion", "tecnico",
     #   "ingreso", "salida", "observacion"]
     #list_editable = ("salida", "observacion")
@@ -47,7 +47,7 @@ class bitacoraAdmin(admin.ModelAdmin):
         }),
 
     )
-    search_fields = ("fecha", "empresa__empresa", "direccion__direccion", "pozo__numero", "tecnico", "ingreso",
+    search_fields = ("fecha", "empresa__empresa", "direccion__direccion", "tecnico", "ingreso",
                      "salida", "observacion", )
     date_hierarchy = "fecha"
 
