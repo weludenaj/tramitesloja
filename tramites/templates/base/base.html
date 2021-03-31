@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{% static 'base/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'base/DataTables/datatables.css' %}">
+ 
 
 </head>
 
@@ -36,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Alcaldia Loja <sup>2021</sup></div>
             </a>
 
             <!-- Divider -->
@@ -379,7 +381,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Alcaldia Loja 2019-2021</span>
                     </div>
                 </div>
             </footer>
@@ -392,7 +394,7 @@
         {% endblock footer %}
     </div>
     <!-- End of Page Wrapper -->
-    {% block login %} {% endblock %}
+    {% block login %} {% endblock login %}
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -426,8 +428,16 @@
     <!-- Core plugin JavaScript-->
     <script src="{% static 'base/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
+    <script type="text/javascript" charset="utf8" src="{% static 'base/DataTables/datatables.js' %}"></script>
+
+
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <script>
+        $(document).ready( function () {
+            $('#table_id').DataTable();
+    } );
+    </script>   
     {% block js_page %} {% endblock js_page %}
 </body>
 

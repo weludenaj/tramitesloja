@@ -69,10 +69,10 @@ class AdministradorAdmin(admin.ModelAdmin):
 
 
 class contraloriaAdmin(admin.ModelAdmin):
-    list_display = ("secuencia", "fechaingreso", "memorando", "recomendacion", "dependencia", "funcionario",
-                    "contestacion", "seguimiento", "fechalastupdate", "observacion", "concluido", "documentos")
+    list_display = ("secuencia", "fechaingreso",  "observacion", "memorando", "recomendacion", "dependencia", "funcionario",
+                    "contestacion", "seguimiento", "fechalastupdate", "concluido", "documentos")
     search_fields = ("fechaingreso", "memorando", "recomendacion",
-                     "dependencia", "funcionario", "contestacion")
+                     "dependencia", "funcionario", "contestacion", "observacion")
     date_hierarchy = "fechaingreso"
 
 

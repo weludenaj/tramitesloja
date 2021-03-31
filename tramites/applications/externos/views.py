@@ -71,6 +71,10 @@ class SuccessView(TemplateView):
     template_name = "success.html"
 
 
+class Listar(TemplateView):
+    template_name = "listaprueba.html"
+
+
 class borrarregistro(DeleteView):
     template_name = "borrado.html"
     model = rexternos
@@ -112,6 +116,22 @@ class rexternosListView(ListView):
     context_object_name = 'listaNumeros'
     paginate_by = 10
     ordering = 'fechaingreso'
+
+    #queryset = ['0', '10', '30', '50']
+
+    def get_queryset(self):    # Escribo el codigo
+        usuarios = self.request.GET.get("nombre", '')
+        listaNumeros = rexternos.objects.filter(
+            Q(usuario__icontains=usuarios) | Q(guianro__icontains=usuarios))
+        return listaNumeros
+
+
+class externosListView(ListView):
+    #model = registroarchivos
+    template_name = "base.html"
+    context_object_name = 'listaNumeros'
+    #paginate_by = 10
+    #ordering = 'fechaingreso'
 
     #queryset = ['0', '10', '30', '50']
 

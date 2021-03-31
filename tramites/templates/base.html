@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+	<title>DataTables example - Zero configuration</title>
+	<link rel="shortcut icon" type="image/png" href="/media/images/favicon.png">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+	<link rel="stylesheet" type="text/css" href="/media/css/site-examples.css?_=0602f7ec58abe00302963423bf7a8d5a">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+	<style type="text/css" class="init">
+	
+	</style>
+	<script type="text/javascript" src="/media/js/site.js?_=30648b1410332bada11fa3ff8050ff88"></script>
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=examples%2Fbasic_init%2Fzero_configuration.html" async></script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../resources/demo.js"></script>
+	<script type="text/javascript" class="init">
+	
+
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+
+	</script>
+</head>
+<body class="wide comments example">
+	<a name="top" id="top"></a>
+	<div class="fw-background">
+		<div></div>
+	</div>
+	<div class="fw-container">
+		<div class="fw-body">
+			<div class="content">
+				<h1 class="page_title">Zero configuration</h1>
+				<div class="info">
+					<p>DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function:
+					<code>$().DataTable();</code>.</p>
+					<p>Searching, ordering and paging goodness will be immediately added to the table, as shown in this example.</p>
+				</div>
+				<div class="demo-html">
+					<table id="example" class="display" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th width="50">Nro</th>
+                                <th width="50">Id</th>
+                                <th width="200">Fecha</th>
+                                <th width="250">Usuario</th>
+                                <th width="150">Guia Nro</th>
+                                <th width="150">Descripción</th>
+                                <th width="150">Oficio</th>
+                                <th width="150">Fecha Entrega</th>
+                                <th width="150">Enviado a</th>
+                                <th width="150">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            {% for registro in  listaNumeros %}
+                
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{registro.id}}</td>
+                                <td>{{registro.fechaingreso}}</td>
+                                <td>{{registro.usuario}}</td> 
+                                <td>{{registro.guianro}}</td>
+                                <td>{{registro.descripcion}}</td>
+                                <td>{{registro.oficio}}</td>
+                                <td>{{registro.fechaentrega}}</td>
+                                <td>{{registro.enviadoa}}</td>
+                                <td><a class="button warning" href="{% url 'externos_app:modificar_registro' registro.id %}">Editar</a> <a class="button alert" href="{% url 'externos_app:borrar_registro' registro.id %}">Borrar</a></td>
+                            </tr>
+                            
+                            {% endfor %}
+                        </tbody>
+                        
+                        <tfoot>
+							<tr>
+                                <th width="50">Nro</th>
+                                <th width="50">Id</th>
+                                <th width="200">Fecha</th>
+                                <th width="250">Usuario</th>
+                                <th width="150">Guia Nro</th>
+                                <th width="150">Descripción</th>
+                                <th width="150">Oficio</th>
+                                <th width="150">Fecha Entrega</th>
+                                <th width="150">Enviado a</th>
+                                <th width="150">Accion</th>
+                            </tr>
+						</tfoot>
+                    </table>
+				</div>
+				
+	<!-- <script type="text/javascript">
+				  var _gaq = _gaq || [];
+				  _gaq.push(['_setAccount', 'UA-365466-5']);
+				  _gaq.push(['_trackPageview']);
+
+				  (function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				  })();
+	</script> -->
+</body>
+</html>

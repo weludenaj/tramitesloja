@@ -78,7 +78,7 @@ class pozos(models.Model):
     class Meta:
         verbose_name = 'Pozos'
         verbose_name_plural = 'Pozos'
-        ordering = ['direccion', '-numero']
+        ordering = ['numero', 'direccion']
     ##  unique_together =('fechaingreso', 'guianro')
 
     def __str__(self):

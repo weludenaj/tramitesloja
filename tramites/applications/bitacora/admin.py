@@ -37,12 +37,13 @@ class bitacoraAdmin(admin.ModelAdmin):
                     "ingreso", "salida", "Tiempo", "PozosDetalle", "observacion", "direccion")
     # fields = [("fecha", "empresa"), "direccion", "tecnico",
     #   "ingreso", "salida", "observacion"]
+    #list_editable = ("salida", "observacion")
     fieldsets = (
         (None, {
-            'fields': [("fecha", "empresa"), "pozo", "tecnico", ]
+            'fields': [("fecha", "empresa"), ("pozo", "tecnico"), ]
         }),
         ('Registro', {
-            'fields': ("ingreso", "salida", "observacion")
+            'fields': [("ingreso", "salida"), "observacion"]
         }),
 
     )
@@ -69,6 +70,7 @@ class bitacoraAdmin(admin.ModelAdmin):
         # ssalida = salida.strftime("%H:%M:%S")
         # print(ssalida)
         return tiempo
+        Tiempo.short_description = 'Estancia'
 
     def direc(self, obj):
         pozo_id = obj.pozo_id
@@ -92,6 +94,7 @@ class bitacoraAdmin(admin.ModelAdmin):
             listas = p[0] + ' , ' + listas
 
         return listas
+        PozosDetalle.short_description = 'Incluye Pozos'
 
     def save_model(self, request, obj, form, change):
         # print(obj.uc)

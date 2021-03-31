@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{% static 'css/dataTables.foundation.min.css' %}"/>
   <!-- <link rel="stylesheet" href="{% static 'css/dataTables.foundation.min.css' %}"/>   -->
   <script src = "{% static 'js/dataTables.foundation.min.js' %}"> </script>
-  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  
 {% endblock heads %}
 
 {% block content %}
@@ -18,16 +18,9 @@
 <div class="grid-container full">
   <div class="grid-x" >
       <h4 class="cell" align="center">TRAMITES EXTERNOS</h4>
-      <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %} 
-        <div class="cell large-5">
-          <input type="text" id="nombre" name="nombre" placeholder="Buscar usuario"> 
-        </div>
-        <div class="cell large-2">
-          <button type="submit" class="success button">Buscar</button>
-        </div>
-      </form>
+      
       <div class="cell">
-          <table id="data" class="data">
+          <table id="data">
           <thead>
             <tr>
               <th width="50">Nro</th>
@@ -114,7 +107,7 @@
         "ordering": false,
         "info":     false
       } );
-    });
+    } );
   </script>
 
 {% endblock javascript %}

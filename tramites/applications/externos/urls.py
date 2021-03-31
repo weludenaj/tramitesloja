@@ -20,6 +20,13 @@ urlpatterns = [
         name='login'
     ),
     path(
+        'listar/',
+        auth_views.LoginView.as_view(
+            template_name='base.html'
+        ),
+        name='listar'
+    ),
+    path(
         'externos/',
         views.ListExternos.as_view(),
         name="externos"
@@ -28,6 +35,11 @@ urlpatterns = [
         'listaexternos/',
         views.rexternosListView.as_view(),
         name="listadoexterno"
+    ),
+    path(
+        'listarexternos/',
+        views.externosListView.as_view(),
+        name="listado_externo"
     ),
     path(
         'insertarexterno/',

@@ -40,6 +40,12 @@ class TramitesInformaticaAdmin(admin.ModelAdmin):
         # print(descrip)
         return descrip
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'asignado':
+            kwargs['queryset'] = Informatica.objects.filter(
+                estado=1).order_by('nombre')
+        return super(TramitesInformaticaAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
     # def dependencia1(self, obj):
     #     # print(obj.dependencia.dependencia)
     #     dep = obj.dependencia.dependencia

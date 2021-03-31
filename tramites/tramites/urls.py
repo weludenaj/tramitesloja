@@ -23,5 +23,6 @@ urlpatterns = [
     re_path('', include('applications.externos.urls')),
     re_path('', include('applications.inventario.urls')),
     re_path('', include('applications.bitacora.urls')),
+    re_path('', include('applications.ducteria.urls')),
     #    re_path('', include('applications.informatica.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

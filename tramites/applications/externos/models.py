@@ -85,7 +85,7 @@ class contraloria(models.Model):
     fechalastupdate = models.DateField(null=True, blank=True)
     #dependencias = models.ManyToManyField(Dependencia)
     observacion = models.TextField(
-        verbose_name="Observacion", null=True, blank=True)
+        verbose_name="Examen", null=True, blank=True)
     concluido = models.BooleanField('Atendido', default=False)
     documentos = models.FileField(upload_to='media', blank=True, null=True)
 
@@ -96,7 +96,7 @@ class contraloria(models.Model):
       ##  unique_together =('fechaingreso', 'guianro')
 
     def __str__(self):
-        return 'Secuencia %s Fecha %s Memorando %s Recomendacion %s Dependencias %s Funcionario %s Contestacion %s Seguimiento %s Observacion %s Concluido %s Documentos %s' % (self.secuencia, self.fechaingreso, self.memorando, self.recomendacion, self.dependencia, self.funcionario, self.contestacion, self.seguimiento, self.observacion, self.concluido, self.documentos)
+        return 'Secuencia %s Fecha %s Examen %s Memorando %s Recomendacion %s Dependencias %s Funcionario %s Contestacion %s Seguimiento %s Concluido %s Documentos %s' % (self.secuencia, self.fechaingreso, self.observacion, self.memorando, self.recomendacion, self.dependencia, self.funcionario, self.contestacion, self.seguimiento, self.concluido, self.documentos)
 
 
 class oficiosenviados(models.Model):
