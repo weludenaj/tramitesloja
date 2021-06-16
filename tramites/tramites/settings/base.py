@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'applications.inventario',
     'applications.informatica',
     'applications.ducteria',
+    'applications.apasivo',
     'ckeditor',
 ]
 
