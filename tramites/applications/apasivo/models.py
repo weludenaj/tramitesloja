@@ -10,22 +10,22 @@ from django.db.models.fields.related import ForeignKey
 class registropasivo(models.Model):
 
     destino = [
-        ("1", "CONSERVACION"),
-        ("2", "ELIMINACION"),
+        ("1", "CONSERVACIÓN"),
+        ("2", "ELIMINACIÓN"),
         ("3", "OTRO"),
     ]
 
     seriedocum = [
         ("1", "OFICIOS"),
         ("2", "MEMORANDOS"),
-        ("3", "OTROS"),
+        ("3", "RESOLUCIONES"),
     ]    
 
     tiposoporte = [
-        ("1", "Fisico"),
-        ("2", "Digital"),
-        ("3", "Magnetico"),
-        ("4", "Soporte"),
+        ("1", "FÍSICO"),
+        ("2", "DIGITAL"),
+        ("3", "MAGNÉTICO"),
+        ("4", "SOPORTE"),
     ]
 
     tipozona = [
