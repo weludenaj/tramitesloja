@@ -12,6 +12,6 @@ class registropasivoAdmin(admin.ModelAdmin):
     list_display = ("seccion", "subseccion", "subserie", "nrocaja", "expediente", "descripcion", "apertura", "cierre", "nrofojas", "destinofinal", "soporte", "zona", "estanteria", "bandeja", "observacion")
     search_fields = ("seccion", "subseccion", "subserie", "nrocaja", "expediente", "descripcion", "observacion")
     list_filter=("seccion","subseccion", "subserie", "estanteria")
-    # date_hierarchy="fechaingreso"
+    date_hierarchy="apertura"
 
 admin.site.register(registropasivo, registropasivoAdmin)
