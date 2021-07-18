@@ -19,7 +19,7 @@ from django .contrib.auth.mixins import LoginRequiredMixin
 
 from .models import registropasivo
 
-#from .managers import pozosManager
+# # from .managers import pozosManager
 
 
 class PasivoView(LoginRequiredMixin, generic.ListView):

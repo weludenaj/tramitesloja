@@ -6,6 +6,21 @@ from django.db.models.fields.related import ForeignKey
 
 # # Create your models here.
 
+class seriedocumental(models.Model):
+    seriedocu = models.CharField(
+        verbose_name = "Serie Documental",
+        default = "--Ingrese Descripcion --",
+        max_length = 150,
+    )
+
+    class Meta:
+        verbose_name = 'Serie Documental'
+        verbose_name_plural = 'Serie Documental'
+        ordering = ['-id']
+        ##  unique_together =('fechaingreso', 'guianro')
+
+    def __str__(self):
+        return self.seriedocu
 
 class registropasivo(models.Model):
 
@@ -15,12 +30,7 @@ class registropasivo(models.Model):
         ("3", "OTRO"),
     ]
 
-    seriedocum = [
-        ("1", "OFICIOS"),
-        ("2", "MEMORANDOS"),
-        ("3", "RESOLUCIONES"),
-    ]    
-
+    
     tiposoporte = [
         ("1", "FÍSICO"),
         ("2", "DIGITAL"),
@@ -41,11 +51,11 @@ class registropasivo(models.Model):
 
     seccion = models.CharField(verbose_name="Seccion", max_length=150)
     subseccion = models.CharField(verbose_name="SubSeccion", max_length=150,default="---Ninguna ---")
-    seriedocu = models.CharField(
-        verbose_name = "Serie Documental",
-        choices = seriedocum,
-        default = "1",
-        max_length = 1,
+    seriedocu = models.ForeignKey(
+        seriedocumental,
+        on_delete=models.CASCADE,
+        default=1,
+        help_text="Escoja la Serie Documental",
     )
     subserie = models.CharField(
         verbose_name="Subserie",
