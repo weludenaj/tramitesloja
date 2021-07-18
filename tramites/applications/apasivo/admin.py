@@ -14,11 +14,16 @@ class seriedocumentalAdmin(admin.ModelAdmin):
     
 
 class registropasivoAdmin(admin.ModelAdmin):
-    list_display = ("seccion", "seriedocu","subseccion", "subserie", "nrocaja", "expediente", "descripcion", "apertura", "cierre", "nrofojas", "destinofinal", "soporte", "zona", "estanteria", "bandeja", "observacion")
+    list_display = ("seccion", "seriedocu","subseccion", "subserie", "nrocaja", "expediente", "descripcions", "apertura", "cierre", "nrofojas", "destinofinal", "soporte", "zona", "estanteria", "bandeja", "observacion")
     search_fields = ("seccion", "subseccion", "subserie", "nrocaja", "expediente", "descripcion", "observacion")
     list_filter=("seccion","seriedocu","subseccion", "subserie", "estanteria")
     date_hierarchy="apertura"
 
+    def descripcions(self, obj):
+        descrip = obj.descripcion
+        descrip = descrip[0:90]
+        # print(descrip)
+        return descrip
  
 admin.site.register(registropasivo, registropasivoAdmin)
 admin.site.register(seriedocumental, seriedocumentalAdmin)
