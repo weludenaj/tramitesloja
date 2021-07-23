@@ -118,6 +118,11 @@ class Empleados(ClaseModelo):
 
 
 class Direcciones(ClaseModelo):
+    estatus = [
+        (1, "Activo"),
+        (2, "Inactivo"),
+        (3, "Bloqueado"),
+    ]
 
     direccion = models.CharField(
         verbose_name='Direccion Ip',
@@ -137,7 +142,7 @@ class Direcciones(ClaseModelo):
     empleado = models.ForeignKey(
         Empleados, on_delete=CASCADE, default=1, related_name='empleado_direccion')
     observacion = models.TextField(verbose_name='Observacion')
-
+    estatusip = models.IntegerField(verbose_name='Estatus', choices=estatus, default=1)
     objects = DireccionesManager()
 
     class Meta:

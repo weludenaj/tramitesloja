@@ -55,11 +55,11 @@ class EmpleadosAdmin(admin.ModelAdmin):
 
 
 class DireccionesAdmin(admin.ModelAdmin):
-    list_display = ("direccion", "estado", "empleado", "categoria", "macaddress",
+    list_display = ("direccion", "estatusip", "empleado", "categoria", "macaddress",
                     "equipo", "switch", "puerto", "dependencia", "observacion")
     search_fields = ("direccion", "macaddress", "equipo",
                      "observacion", "empleado__nombres", "dependencia__dependencia", "switch__nombre", "categoria__categoria")
-    list_filter = ("estado", "switch", "categoria")
+    list_filter = ("estado", "estatusip", "switch", "categoria")
     readonly_fields = ('um', 'uc')
 
     def save_model(self, request, obj, form, change):
