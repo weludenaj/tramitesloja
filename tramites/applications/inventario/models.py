@@ -120,7 +120,7 @@ class Empleados(ClaseModelo):
 class Direcciones(ClaseModelo):
     estatus = [
         (1, "Activo"),
-        (2, "Inactivo"),
+        (2, "Libre"),
         (3, "Bloqueado"),
     ]
 
